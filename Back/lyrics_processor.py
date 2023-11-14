@@ -1,5 +1,13 @@
 import spacy
 
+"""
+    Run these commands before using this class
+    
+    python -m venv .env
+    source .env/bin/activate
+    pip install -U pip setuptools wheel
+    pip install -U spacy
+"""
 class LyricsProcessor:
     def __init__(self):
 
