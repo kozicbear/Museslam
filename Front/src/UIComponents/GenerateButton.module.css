@@ -1,0 +1,12 @@
+.generateButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: .3rem solid red;
+
+    height: 10rem;
+    color: white;
+    font-family: 'AppleSDGothicNeo-Bold';
+    font-size: 5rem;
+}
