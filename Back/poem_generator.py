@@ -23,12 +23,12 @@ class PoemGenerator:
         # Call helper method to help with generation
         self.sums = self.get_sums(self.words)
 
-        poem = self.generate_poem(self.words, self.sentence_structs)
-        print(poem)
-        f = open("poems.txt", "a")
-        f.write("POEM: \n")
-        f.write(poem + '\n')
-        f.close()
+        self.poem = self.generate_poem(self.words, self.sentence_structs)
+
+        # f = open("poems.txt", "a")
+        # f.write("POEM: \n")
+        # f.write(self.poem + '\n')
+        # f.close()
 
     def generate_poem(self, words, structs, length=10):
         # start with picking a random sentence struct
@@ -37,11 +37,11 @@ class PoemGenerator:
         # convert struct to list
         order = struct.split(',')
         
-        poem = ""
+        poem = []
         for i in range(length):
-            poem += self.generate_line(order, words)
-            poem += "\n"
+            poem.append(self.generate_line(order, words))
             # pick a new random struct
+            # TODO: still looks like it picks the same struct for the entire poem
             struct = self.pick_struct(structs)
 
         return poem
@@ -90,9 +90,6 @@ class PoemGenerator:
 
         # pick a random number in the range of that sum
         return self.select_random(sum, structs)
-
-def main():
-	PoemGenerator()
-
-if __name__ == '__main__':
-	main()
+    
+    def get_poem(self):
+        return self.poem

@@ -16,8 +16,8 @@
 
 body {
   margin: 0;
-  /* display: flex; */
   place-items: center;
+  height: max-content;
   min-width: 320px;
   min-height: 100vh;
   background-color: black;
