@@ -21,16 +21,18 @@ class PoemGenerator:
         # print(self.sentence_structs)
 
         # Call helper method to help with generation
+        
+    
+    def generate_poem(self):
         self.sums = self.get_sums(self.words)
-
-        self.poem = self.generate_poem(self.words, self.sentence_structs)
-
+        poem = self.generate_poem_lines(self.words, self.sentence_structs)
         # f = open("poems.txt", "a")
         # f.write("POEM: \n")
         # f.write(self.poem + '\n')
         # f.close()
+        return poem
 
-    def generate_poem(self, words, structs, length=10):
+    def generate_poem_lines(self, words, structs, length=10):
         # start with picking a random sentence struct
         struct = self.pick_struct(structs)
 
@@ -90,6 +92,3 @@ class PoemGenerator:
 
         # pick a random number in the range of that sum
         return self.select_random(sum, structs)
-    
-    def get_poem(self):
-        return self.poem
