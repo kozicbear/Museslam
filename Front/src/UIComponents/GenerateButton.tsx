@@ -15,17 +15,6 @@ export default function GenerateButton() {
         )
     }
 
-    // useEffect(() => {
-    //     fetch("/api/poem").then(
-    //         response => response.text()
-    //     ).then(
-    //         data => {
-    //             // setPoem(data)
-    //             console.log(data)
-    //         }
-    //     )
-    // }, [poem])
-
     return (
         <div onClick={handleClick} className={styles.generateButton}>Generate Poem</div>
     )
