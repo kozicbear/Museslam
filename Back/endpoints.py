@@ -19,10 +19,8 @@ def atHeaders(response):
 @app.route("/api/poem", methods=['GET'])
 @cross_origin()
 def poem():
-        # res = generator.generate_poem()
-        # print(json.dumps(res))
         return jsonify({
-                "poem" : 1,
+                "poem" : generator.generate_poem()
         })
 
 if __name__ == '__main__':

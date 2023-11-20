@@ -9,7 +9,16 @@
     height: 10rem;
     width: 30rem;
     color: white;
-    font-family: 'AppleSDGothicNeo-Bold';
     font-size: 3rem;
     cursor: pointer;
+}
+
+.poemDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 2rem;
 }

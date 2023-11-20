@@ -2,20 +2,31 @@ import React, {useState, useEffect} from 'react'
 import styles from './GenerateButton.module.css'
 
 export default function GenerateButton() {
-    const [poem, setPoem] = useState(null)
+    const [poem, setPoem] = useState(Object)
+    const [showPoem, setShowPoem] = useState(false)
 
     const handleClick = async () => {
         fetch("http://127.0.0.1:5000/api/poem").then(
-            response => response.text()
+            response => response.json()
         ).then(
             data => {
-                // setPoem(data)
-                console.log(data)
+                console.log(JSON.parse(data.poem))
+                setPoem(JSON.parse(data.poem))
+                setShowPoem(true)
             }
         )
     }
 
     return (
-        <div onClick={handleClick} className={styles.generateButton}>Generate Poem</div>
+        <div>
+            <div onClick={handleClick} className={styles.generateButton}>Generate Poem</div>
+            { showPoem && 
+                <div className={styles.poemDiv}> 
+                    { 
+                        poem
+                    } 
+                </div> 
+            }
+        </div>
     )
 }
