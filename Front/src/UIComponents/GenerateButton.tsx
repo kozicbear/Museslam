@@ -10,23 +10,17 @@ export default function GenerateButton() {
             response => response.json()
         ).then(
             data => {
-                console.log(JSON.parse(data.poem))
-                setPoem(JSON.parse(data.poem))
+                const array = data.poem.map((line: String) => <div className={styles.line}> {line} </div>)
+                setPoem(array)
                 setShowPoem(true)
             }
         )
     }
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             <div onClick={handleClick} className={styles.generateButton}>Generate Poem</div>
-            { showPoem && 
-                <div className={styles.poemDiv}> 
-                    { 
-                        poem
-                    } 
-                </div> 
-            }
+            { showPoem && poem }
         </div>
     )
 }
