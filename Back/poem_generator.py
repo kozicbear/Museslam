@@ -38,13 +38,12 @@ class PoemGenerator:
 
         # convert struct to list
         order = struct.split(',')
-        
         poem = []
         for i in range(length):
             poem.append(self.generate_line(order, words))
             # pick a new random struct
-            # TODO: still looks like it picks the same struct for the entire poem
             struct = self.pick_struct(structs)
+            order = struct.split(',')    
 
         return poem
         
@@ -52,9 +51,12 @@ class PoemGenerator:
     def generate_line(self, order, words):
         line = ""
         for type in order:
+            print("type: ", type)
             word_choice = self.words[type]
             word = self.select_random(self.sums[type], word_choice)
+            print("word: ", word)
             line += word + " "
+        print("\n")
         return line.strip()
              
         
