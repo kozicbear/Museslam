@@ -1,15 +1,10 @@
 import spacy
 
-"""
-    Run these commands before using this class
-
-    python -m venv .env
-    source .env/bin/activate
-    pip install -U pip setuptools wheel
-    pip install -U spacy
-"""
 class LyricsProcessor:
     def __init__(self):
+        """ Initialize that calls methods to obtain word and
+            and sentence struct dictionaries
+        """
         # dictionary mapping nouns, verbs, etc to their own list of ints
         # which map to the frequency of a certain word
         # Noun -> Woman: 12, Dog: 10, Car: 3
@@ -18,12 +13,6 @@ class LyricsProcessor:
         
         # dictionary of sentence structs and frequency
         # "NOUN,PRON,VERB" : 3
-        # TODO: when it comes to picking sentence structs, we can sum
-        # the total of sentecne structs, pick a random value and index
-        # into that one
-        # to adjust for more common or less common we can shift that
-        # indexing either to front or back of list since more common
-        # are at the front
         self.sentence_structs = {}
 
         data = []
@@ -40,6 +29,10 @@ class LyricsProcessor:
         return self.sentence_structs
 
     def process_sentence_structs(self, lyrics):
+        """ Method to get the sentence structures from the scraped lyrics file
+            args:
+                lyrics (list): containing all lyric sentences
+        """
         nlp = spacy.load("en_core_web_sm")
         for line in lyrics:
             doc = nlp(line)
@@ -59,6 +52,10 @@ class LyricsProcessor:
         self.sentence_structs = dict(self.sentence_structs)
     
     def process_word_choice(self, lyrics):
+        """ Method to get the word choices from the scraped lyrics file
+            args:
+                lyrics (list): containing all lyric sentences
+        """
         nlp = spacy.load("en_core_web_sm")
         for line in lyrics:
             doc = nlp(line)
@@ -69,7 +66,6 @@ class LyricsProcessor:
                 text = token.text
                 # if type there add to it
                 if type in self.words.keys():
-                    # TODO: might want to insert some capitalization checks here
                     if text in self.words[type].keys():
                         self.words[type][text] += 1
                     else:
